@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">ECommerceProj</string>
+    <string name="mobile">MOBILE NUMBER</string>
+    <string name="password">PASSWORD</string>
+    <string name="register">Register</string>
+    <string name="forgotPassword">Forgot Password?</string>
+    <string name="fname">FIRST NAME</string>
+    <string name="lname">LAST NAME</string>
+    <string name="address">ADDRESS</string>
+    <string name="email">EMAIL</string>
+    <string name="login">Login</string>
+    <string name="submit">Submit</string>
+    <string name="ok">OK</string>
+    <string name="invalid">Invalid</string>
+    <string name="userValidation">
+        First and last name can only have letters and must be between 4 and 20 characters.
+    </string>
+    <string name="addressValidation">
+        Address cannot have special characters.
+    </string>
+    <string name="emailValidation">
+        Email cannot have special characters except \"_ - @\".
+    </string>
+    <string name="mobileValidation">
+        Mobile number must have 10 numbers. No dashes or hyphens.
+    </string>
+    <string name="passwordValidation">
+        Password must be between 5-20 characters and have at least one number, one capital letter, one lowercase letter, and one special character.
+    </string>
+    <string name="forgotpasswordTitle">
+        Forgot Password?
+    </string>
+    <string name="forgotpasswordDesc">
+        Enter the email associated with your account. You may login with the new password that will be sent to your email.
+    </string>
+    <string name="alertRegistrationSuccess">
+        Registration Success
+    </string>
+    <string name="alertRegistrationSuccessMessage">
+        You may login with your new account.
+    </string>
+    <string name="alertRegistrationFailed">
+        Registration Failed
+    </string>
+    <string name="alertRegistrationFailedMessage">
+        An account with that mobile number already exists. Please enter a different number.
+    </string>
+    <string name="loadingData">
+        Loading data from the server...
+    </string>
+    <string name="serverNotResponding">
+        Server is not responding...
+    </string>
+    <string name="alertTimeout">
+        Session Timeout
+    </string>
+    <string name="alertTimeoutMessage">
+        Please login again.
+    </string>
+    <string name="loggingin">
+        Logging into the server...
+    </string>
+    <string name="alertWrongUser">
+        User doesn\'t exist. Please try again...
+    </string>
+    <string name="registering">
+        Registering new user...
+    </string>
+</resources>
