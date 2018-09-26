@@ -50,6 +50,10 @@ public interface IDataManager extends IDbHelper, INetworkHelper {
         void userRegister(boolean isSuccess);
     }
 
+    interface OnProfileUpdateListener {
+        void updateProfile(boolean isUpdated);
+    }
+
     interface OnTopSellerListener {
         void getTopSellers(ArrayList<TopSeller> sellerList);
     }

@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public class TopSellerPresenter implements ITopSellerPresenter, IDataManager.OnTopSellerListener {
 
-    ITopSellerView sellerView;
-    IDataManager dataManager;
-    Activity activity;
+    private ITopSellerView sellerView;
+    private IDataManager dataManager;
+    private Activity activity;
 
     public TopSellerPresenter(TopSellerActivity activity) {
         dataManager = new DataManager(activity);

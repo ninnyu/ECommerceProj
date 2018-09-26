@@ -2,7 +2,7 @@ package com.example.potatopaloozac.ecommerceproj.data.network.model;
 
 public class TopSeller {
 
-    String id, name, deal, rating, logo;
+    private String id, name, deal, rating, logo;
 
     public TopSeller(String id, String name, String deal, String rating, String logo) {
         this.id = id;

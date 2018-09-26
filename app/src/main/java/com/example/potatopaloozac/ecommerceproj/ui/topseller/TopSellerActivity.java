@@ -41,8 +41,8 @@ public class TopSellerActivity extends AppCompatActivity implements ITopSellerVi
     @BindView(R.id.tv_titlebar)
     TextView tv_titlebar;
 
-    RecyclerView rv_topseller;
-    ITopSellerPresenter topSellerPresenter;
+    private RecyclerView rv_topseller;
+    private ITopSellerPresenter topSellerPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

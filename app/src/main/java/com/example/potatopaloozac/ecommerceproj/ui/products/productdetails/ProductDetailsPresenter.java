@@ -13,7 +13,7 @@ public class ProductDetailsPresenter implements IProductDetailsPresenter {
 
     private IDataManager dataManager;
     private IProductDetailsView productView;
-    Activity activity;
+    private Activity activity;
 
     public ProductDetailsPresenter(ProductDetailsActivity activity) {
         dataManager = new DataManager(activity);

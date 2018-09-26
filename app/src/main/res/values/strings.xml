@@ -87,4 +87,16 @@
     <string name="registering">
         Registering new user...
     </string>
+    <string name="alertUpdateSuccess">
+        Profile Update Success
+    </string>
+    <string name="alertUpdateSuccessMessage">
+        Your profile has been updated with the new information.
+    </string>
+    <string name="alertUpdateFailed">
+        Profile Update Failed
+    </string>
+    <string name="alertUpdateFailedMessage">
+        Your profile was not updated. The mobile number you entered was not found.
+    </string>
 </resources>

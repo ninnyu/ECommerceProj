@@ -1,5 +1,6 @@
 package com.example.potatopaloozac.ecommerceproj.ui.login.userprofile;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.potatopaloozac.ecommerceproj.R;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.UserProfile;
+import com.example.potatopaloozac.ecommerceproj.ui.login.userprofile.updateprofile.UpdateProfileActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.products.productcategories.CategoriesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.shoppingcart.ShoppingCartActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.topseller.TopSellerActivity;
@@ -36,13 +38,16 @@ public class UserProfileActivity extends AppCompatActivity implements IUserProfi
     @BindView(R.id.tv_usermobile)
     TextView tvUsermobile;
 
-    IUserProfilePresenter profilePresenter;
+    private IUserProfilePresenter profilePresenter;
+    public static Activity userProfileActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         ButterKnife.bind(this);
+
+        userProfileActivity = this;
 
         setSupportActionBar(toolbar);
 
@@ -84,8 +89,11 @@ public class UserProfileActivity extends AppCompatActivity implements IUserProfi
                 startActivity(i);
                 break;
             }
-            case R.id.bt_updateProfile:
+            case R.id.bt_updateProfile: {
+                Intent i = new Intent(this, UpdateProfileActivity.class);
+                startActivity(i);
                 break;
+            }
         }
     }
 }

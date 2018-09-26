@@ -42,6 +42,8 @@
         <activity
             android:name=".ui.login.userprofile.UserProfileActivity"
             android:theme="@style/noAnimTheme" />
+        <activity
+            android:name=".ui.login.userprofile.updateprofile.UpdateProfileActivity" />
     </application>
 
 </manifest>

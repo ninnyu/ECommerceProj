@@ -19,7 +19,7 @@ import java.util.List;
 public class ShoppingCartRecyclerAdapter extends RecyclerView.Adapter<ShoppingCartRecyclerAdapter.MyViewHolder> {
 
     private List<ShoppingCart> cartList;
-    DbHelper dbHelper;
+    private DbHelper dbHelper;
     private Context context;
 
     public ShoppingCartRecyclerAdapter(List<ShoppingCart> cartList, Context context) {

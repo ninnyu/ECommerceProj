@@ -39,7 +39,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements IProduc
     @BindView(R.id.tv_detailsDesc)
     TextView tv_detailsDesc;
 
-    IProductDetailsPresenter detailsPresenter;
+    private IProductDetailsPresenter detailsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -10,9 +10,9 @@ import com.example.potatopaloozac.ecommerceproj.data.database.DbHelper;
 
 public class ShoppingCartPresenter implements IShoppingCartPresenter {
 
-    IShoppingCartView cartView;
-    IDataManager dataManager;
-    Activity activity;
+    private IShoppingCartView cartView;
+    private IDataManager dataManager;
+    private Activity activity;
 
     public ShoppingCartPresenter(ShoppingCartActivity activity) {
         dataManager = new DataManager(activity);

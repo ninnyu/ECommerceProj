@@ -10,10 +10,9 @@ import com.example.potatopaloozac.ecommerceproj.data.network.model.UserProfile;
 
 public class UserProfilePresenter implements IUserProfilePresenter, IDataManager.OnUserProfileListener {
 
-    IDataManager dataManager;
-    IUserProfileView profileView;
-    Activity activity;
-
+    private IDataManager dataManager;
+    private IUserProfileView profileView;
+    private Activity activity;
 
     public UserProfilePresenter(UserProfileActivity activity) {
         dataManager = new DataManager(activity);

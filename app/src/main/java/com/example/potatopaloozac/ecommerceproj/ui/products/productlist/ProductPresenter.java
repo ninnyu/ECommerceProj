@@ -12,7 +12,7 @@ public class ProductPresenter implements IProductPresenter, IDataManager.OnProdu
 
     private IDataManager dataManager;
     private IProductView productView;
-    Activity activity;
+    private Activity activity;
 
     public ProductPresenter(ProductsActivity activity) {
         dataManager = new DataManager(activity);

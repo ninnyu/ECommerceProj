@@ -76,6 +76,11 @@ public class DataManager implements IDataManager {
     }
 
     @Override
+    public void updateProfile(OnProfileUpdateListener profileUpdateListener, UserProfile profile) {
+        networkHelper.updateProfile(profileUpdateListener, profile);
+    }
+
+    @Override
     public void register(OnRegisterListener registerListener, UserProfile profile) {
         networkHelper.register(registerListener, profile);
     }

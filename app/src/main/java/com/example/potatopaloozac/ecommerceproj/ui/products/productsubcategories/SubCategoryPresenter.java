@@ -12,7 +12,7 @@ public class SubCategoryPresenter implements ISubCategoryPresenter, IDataManager
 
     private IDataManager dataManager;
     private ISubCategoryView subCategoryView;
-    Activity activity;
+    private Activity activity;
 
     public SubCategoryPresenter(SubCategoriesActivity activity) {
         dataManager = new DataManager(activity);

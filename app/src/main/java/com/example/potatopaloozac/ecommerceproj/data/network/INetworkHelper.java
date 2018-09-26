@@ -11,6 +11,7 @@ public interface INetworkHelper {
     void getProductList(IDataManager.OnProductListener productListener, Activity activity);
     void login(IDataManager.OnLoginListener loginListener);
     void getUserProfile(IDataManager.OnUserProfileListener profileListener);
+    void updateProfile(IDataManager.OnProfileUpdateListener profileUpdateListener, UserProfile profile);
     void register(IDataManager.OnRegisterListener registerListener, UserProfile profile);
     void getSellerList(IDataManager.OnTopSellerListener sellerListener);
 }

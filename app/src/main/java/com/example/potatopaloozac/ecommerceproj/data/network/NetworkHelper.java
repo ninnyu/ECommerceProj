@@ -345,6 +345,44 @@ public class NetworkHelper implements INetworkHelper {
     }
 
     @Override
+    public void updateProfile(final IDataManager.OnProfileUpdateListener profileUpdateListener, final UserProfile profile) {
+
+        pDialog = new ProgressDialog(context);
+        pDialog.setMessage(context.getResources().getString(R.string.registering));
+        pDialog.show();
+
+        String url = "http://rjtmobile.com/aamir/e-commerce/android-app/edit_profile.php?fname="
+                + profile.getFname() + "&lname=" + profile.getLname() + "&address=" + profile.getAddress()
+                + "&email=" + profile.getEmail() + "&mobile=" + profile.getMobile();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                pDialog.dismiss();
+                if (response.equals("successfully updated")) {
+
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("userfname", profile.getFname());
+                    editor.putString("userlname", profile.getLname());
+                    editor.putString("useremail", profile.getEmail());
+                    editor.putString("usermobile", profile.getMobile());
+                    editor.commit();
+
+                    profileUpdateListener.updateProfile(true);
+                } else {
+                    profileUpdateListener.updateProfile(false);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        AppController.getInstance().addToRequestQueue(stringRequest);
+    }
+
+    @Override
     public void register(final IDataManager.OnRegisterListener registerListener, UserProfile profile) {
 
         pDialog = new ProgressDialog(context);

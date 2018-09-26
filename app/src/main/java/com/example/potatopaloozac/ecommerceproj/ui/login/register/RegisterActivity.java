@@ -19,8 +19,6 @@ import butterknife.OnClick;
 
 public class RegisterActivity extends AppCompatActivity implements IRegisterView {
 
-    private IRegisterPresenter registerPresenter;
-
     @BindView(R.id.et_registerfname)
     EditText et_fname;
     @BindView(R.id.et_registerlname)
@@ -45,6 +43,8 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
     TextView tv_PasswordValidation;
     @BindView(R.id.bt_register)
     Button bt_Register;
+
+    private IRegisterPresenter registerPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

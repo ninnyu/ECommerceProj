@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.login.register.RegisterActivity"
+    tools:context=".ui.login.userprofile.updateprofile.UpdateProfileActivity"
     android:orientation="vertical"
     android:padding="20dp"
     android:gravity="center">
@@ -15,7 +15,7 @@
         android:paddingBottom="50dp"
         android:textSize="30sp"
         android:layout_gravity="center"
-        android:text="@string/register" />
+        android:text="@string/updateprofile" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,22 +78,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"/>
-    <EditText
-        android:id="@+id/et_registerpassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/password"/>
-    <TextView
-        android:id="@+id/tv_passwordValidation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"/>
     <Button
-        android:id="@+id/bt_register"
+        android:id="@+id/bt_updateProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/register" />
+        android:text="@string/updateprofile" />
 
 </LinearLayout>
