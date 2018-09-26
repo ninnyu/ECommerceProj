@@ -2,10 +2,17 @@ package com.example.potatopaloozac.ecommerceproj.data.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
+import com.example.potatopaloozac.ecommerceproj.data.IDataManager;
+import com.example.potatopaloozac.ecommerceproj.data.database.model.ShoppingCart;
 import com.example.potatopaloozac.ecommerceproj.data.database.model.ShoppingCartContract.*;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.Product;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DbHelper implements IDbHelper {
 
@@ -20,7 +27,7 @@ public class DbHelper implements IDbHelper {
     }
 
     @Override
-    public void createRow(Product product, int n) {
+    public void createRow(Product product, int n, int inCart, int inFavorites) {
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(ShoppingCartEntry.COLUMN_PRODUCT_ID, product.getId());
@@ -29,17 +36,21 @@ public class DbHelper implements IDbHelper {
         contentValues.put(ShoppingCartEntry.COLUMN_PRICE, product.getPrice());
         contentValues.put(ShoppingCartEntry.COLUMN_DESC, product.getDescription());
         contentValues.put(ShoppingCartEntry.COLUMN_IMAGE, product.getImage());
+        contentValues.put(ShoppingCartEntry.COLUMN_INCART, inCart);
+        contentValues.put(ShoppingCartEntry.COLUMN_INFAVORITES, inFavorites);
 
         db.insert(ShoppingCartEntry.TABLENAME_SHOPPINGCART, null, contentValues);
     }
 
     @Override
-    public void readRow() {
-
+    public void readRow(Product product) {
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ShoppingCartEntry.TABLENAME_SHOPPINGCART
+                + " WHERE " + ShoppingCartEntry.COLUMN_PRODUCT_ID + " = '" + product.getId() + "'", null);
+        cursor.moveToFirst();
     }
 
     @Override
-    public void updateRow() {
+    public void updateRow(Product product, int n, int inCart, int inFavorites) {
 
     }
 

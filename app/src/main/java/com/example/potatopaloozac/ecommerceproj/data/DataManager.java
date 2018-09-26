@@ -2,6 +2,8 @@ package com.example.potatopaloozac.ecommerceproj.data;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 
 import com.example.potatopaloozac.ecommerceproj.data.database.DbHelper;
 import com.example.potatopaloozac.ecommerceproj.data.database.IDbHelper;
@@ -21,18 +23,18 @@ public class DataManager implements IDataManager {
     }
 
     @Override
-    public void createRow(Product product, int n) {
-        dbHelper.createRow(product, n);
+    public void createRow(Product product, int n, int inCart, int inFavorites) {
+        dbHelper.createRow(product, n, inCart, inFavorites);
     }
 
     @Override
-    public void readRow() {
-
+    public void readRow(Product product) {
+        dbHelper.readRow(product);
     }
 
     @Override
-    public void updateRow() {
-
+    public void updateRow(Product product, int n, int inCart, int inFavorites) {
+        dbHelper.updateRow(product, n, inCart, inFavorites);
     }
 
     @Override
@@ -56,8 +58,21 @@ public class DataManager implements IDataManager {
     }
 
     @Override
+    public Product getDetails(Activity activity) {
+        Bundle b = activity.getIntent().getExtras();
+        String[] arr = b.getStringArray("productdetails");
+        Product product = new Product(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
+        return product;
+    }
+
+    @Override
     public void login(OnLoginListener loginListener) {
         networkHelper.login(loginListener);
+    }
+
+    @Override
+    public void getUserProfile(OnUserProfileListener profileListener) {
+        networkHelper.getUserProfile(profileListener);
     }
 
     @Override
@@ -65,5 +80,9 @@ public class DataManager implements IDataManager {
         networkHelper.register(registerListener, profile);
     }
 
+    @Override
+    public void getSellerList(OnTopSellerListener sellerListener) {
+        networkHelper.getSellerList(sellerListener);
+    }
 
 }

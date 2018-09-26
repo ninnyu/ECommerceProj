@@ -1,4 +1,4 @@
-package com.example.potatopaloozac.ecommerceproj.ui.products;
+package com.example.potatopaloozac.ecommerceproj.utils;
 
 import android.view.View;
 
@@ -9,15 +9,15 @@ import com.example.potatopaloozac.ecommerceproj.data.network.model.ProductSubCat
 public interface CustomClickListener {
 
     interface CategoryClick {
-        public void onItemClick(View v, ProductCategory category);
+        void onItemClick(View v, ProductCategory category);
     }
 
     interface SubCategoryClick {
-        public void onItemClick(View v, ProductSubCategory subCategory);
+        void onItemClick(View v, ProductSubCategory subCategory);
     }
 
     interface ProductClick {
-        public void onItemClick(View v, Product product);
+        void onItemClick(View v, Product product);
     }
 
 }

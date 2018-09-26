@@ -14,5 +14,8 @@ public final class ShoppingCartContract {
         public static final String COLUMN_PRICE = "price";
         public static final String COLUMN_DESC = "description";
         public static final String COLUMN_IMAGE = "image";
+        public static final String COLUMN_INCART = "in_cart";
+        public static final String COLUMN_INFAVORITES = "in_favorites";
+
     }
 }

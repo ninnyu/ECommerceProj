@@ -17,7 +17,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.example.potatopaloozac.ecommerceproj.AppController;
+import com.example.potatopaloozac.ecommerceproj.data.network.model.TopSeller;
+import com.example.potatopaloozac.ecommerceproj.utils.AppController;
 import com.example.potatopaloozac.ecommerceproj.R;
 import com.example.potatopaloozac.ecommerceproj.data.IDataManager;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.Login;
@@ -38,10 +39,12 @@ public class NetworkHelper implements INetworkHelper {
     private ArrayList<ProductCategory> categoryList;
     private ArrayList<ProductSubCategory> subCategoryList;
     private ArrayList<Product> productList;
+    private ArrayList<TopSeller> sellerList;
 
     private ProductCategory productCategory;
     private ProductSubCategory productSubCategory;
     private Product product;
+    private TopSeller seller;
 
     private Login login;
     private UserProfile userProfile;
@@ -263,8 +266,6 @@ public class NetworkHelper implements INetworkHelper {
 
         login = new Login(sp.getString("mobile", ""), sp.getString("password", ""));
 
-        Log.d("tag", sp.getString("mobile", "") + sp.getString("password", ""));
-
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("isLoggedin", false);
         editor.commit();
@@ -275,8 +276,6 @@ public class NetworkHelper implements INetworkHelper {
 
         String url = "http://rjtmobile.com/aamir/e-commerce/android-app/shop_login.php?mobile="
                 + login.getMobile() + "&password=" + login.getPassword();
-
-        Log.d("tag", url);
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -297,11 +296,14 @@ public class NetworkHelper implements INetworkHelper {
                         loginListener.userLogin(login);
 
                         SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("userid", id);
+                        editor.putString("userfname", firstname);
+                        editor.putString("userlname", lastname);
+                        editor.putString("useremail", email);
+                        editor.putString("usermobile", mobile);
                         editor.putString("apikey", appapikey);
                         editor.putString("id", id);
                         editor.commit();
-
-                        Log.d("tag", String.valueOf(sp.getBoolean("isLoggedin", false)));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -330,6 +332,19 @@ public class NetworkHelper implements INetworkHelper {
     }
 
     @Override
+    public void getUserProfile(IDataManager.OnUserProfileListener profileListener) {
+        String id = sp.getString("userid", "");
+        String fname = sp.getString("userfname", "");
+        String lname = sp.getString("userlname", "");
+        String email = sp.getString("useremail", "");
+        String mobile = sp.getString("usermobile", "");
+
+        userProfile = new UserProfile(id, fname, lname, email, mobile);
+
+        profileListener.userProfile(userProfile);
+    }
+
+    @Override
     public void register(final IDataManager.OnRegisterListener registerListener, UserProfile profile) {
 
         pDialog = new ProgressDialog(context);
@@ -339,8 +354,6 @@ public class NetworkHelper implements INetworkHelper {
         String url = "http://rjtmobile.com/aamir/e-commerce/android-app/shop_reg.php?fname="
                 + profile.getFname() + "&lname=" + profile.getLname() + "&address=" + profile.getAddress()
                 + "&email=" + profile.getEmail() + "&mobile=" + profile.getMobile() + "&password=" + profile.getPassword();
-
-        Log.d("tag", "register url: " + url);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -360,5 +373,68 @@ public class NetworkHelper implements INetworkHelper {
         });
         AppController.getInstance().addToRequestQueue(stringRequest);
     }
+
+    @Override
+    public void getSellerList(final IDataManager.OnTopSellerListener sellerListener) {
+
+        sellerList = new ArrayList<>();
+
+        pDialog = new ProgressDialog(context);
+        pDialog.setMessage(context.getResources().getString(R.string.loadingData));
+        pDialog.show();
+
+        String url = "http://rjtmobile.com/aamir/e-commerce/android-app/shop_top_sellers.php?";
+
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(
+                Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                if (response != null) {
+                    pDialog.dismiss();
+                    try {
+                        JSONArray jsonArray = response.getJSONArray("Top sellers");
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject a = jsonArray.getJSONObject(i);
+
+                            String id = a.getString("id");
+                            String sellername = a.getString("sellername");
+                            String sellerdeal = a.getString("sellerdeal");
+                            String sellerrating = a.getString("sellerrating");
+                            String sellerlogo = a.getString("sellerlogo");
+
+                            seller = new TopSeller(id, sellername, sellerdeal, sellerrating, sellerlogo);
+                            sellerList.add(seller);
+                        }
+                    } catch (JSONException e) {
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                        alertDialogBuilder.setTitle(R.string.alertTimeout);
+                        alertDialogBuilder.setMessage(R.string.alertTimeoutMessage);
+
+                        alertDialogBuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(context, LoginActivity.class);
+                                context.startActivity(i);
+                            }
+                        });
+
+                        alertDialogBuilder.show();
+                    }
+                    sellerListener.getTopSellers(sellerList);
+                } else {
+                    pDialog.setMessage(context.getResources().getString(R.string.serverNotResponding));
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        AppController.getInstance().addToRequestQueue(jsonObjReq);
+    }
+
 
 }

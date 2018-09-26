@@ -1,5 +1,9 @@
 package com.example.potatopaloozac.ecommerceproj.ui.shoppingcart;
 
+import android.view.View;
+
 public interface IShoppingCartPresenter {
-    public void onActivityCreated();
+    void onActivityCreated();
+    void getCartData();
+    void onButtonClicked(View v);
 }

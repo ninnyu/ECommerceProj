@@ -18,9 +18,14 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + ShoppingCartEntry.TABLENAME_SHOPPINGCART + " ("
-                + ShoppingCartEntry.COLUMN_PRODUCT_ID + " INT, " + ShoppingCartEntry.COLUMN_PRODUCT_NAME + " TEXT, "
-                + ShoppingCartEntry.COLUMN_QUANTITY + " INT, " + ShoppingCartEntry.COLUMN_PRICE + " TEXT, "
-                + ShoppingCartEntry.COLUMN_DESC + " TEXT, " + ShoppingCartEntry.COLUMN_IMAGE + " TEXT)";
+                + ShoppingCartEntry.COLUMN_PRODUCT_ID + " INT, "
+                + ShoppingCartEntry.COLUMN_PRODUCT_NAME + " TEXT, "
+                + ShoppingCartEntry.COLUMN_QUANTITY + " INT, "
+                + ShoppingCartEntry.COLUMN_PRICE + " TEXT, "
+                + ShoppingCartEntry.COLUMN_DESC + " TEXT, "
+                + ShoppingCartEntry.COLUMN_IMAGE + " TEXT, "
+                + ShoppingCartEntry.COLUMN_INCART + " INTEGER DEFAULT 0, "
+                + ShoppingCartEntry.COLUMN_INFAVORITES + " INTEGER DEFAULT 0)";
         db.execSQL(CREATE_TABLE);
     }
 

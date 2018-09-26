@@ -12,6 +12,27 @@
     <string name="submit">Submit</string>
     <string name="ok">OK</string>
     <string name="invalid">Invalid</string>
+    <string name="shop">NINNYU\'S ECOMMERCE SHOP</string>
+    <string name="productname">Product Name:</string>
+    <string name="quantity">In Stock:</string>
+    <string name="price">Price:</string>
+    <string name="desc">Description:</string>
+    <string name="topsellers">TOP SELLERS</string>
+    <string name="sellername">Seller Name:</string>
+    <string name="sellerdeal">Seller\'s Deal:</string>
+    <string name="sellerrating">Seller\'s Rating:</string>
+    <string name="favorites">FAVORITES</string>
+    <string name="addtofavorites">Add to Favorites</string>
+    <string name="shoppingcart">SHOPPING CART</string>
+    <string name="addtocart">Add to Cart</string>
+    <string name="userprofile">YOUR ACCOUNT PROFILE</string>
+    <string name="userid">User ID:</string>
+    <string name="username">Your Name:</string>
+    <string name="useraddress">Address:</string>
+    <string name="useremail">Email:</string>
+    <string name="usermobile">Mobile:</string>
+    <string name="updateprofile">Update Profile</string>
+
     <string name="userValidation">
         First and last name can only have letters and must be between 4 and 20 characters.
     </string>

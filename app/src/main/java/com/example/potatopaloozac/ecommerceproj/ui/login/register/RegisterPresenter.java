@@ -1,8 +1,6 @@
 package com.example.potatopaloozac.ecommerceproj.ui.login.register;
 
 import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.example.potatopaloozac.ecommerceproj.data.DataManager;
 import com.example.potatopaloozac.ecommerceproj.data.IDataManager;

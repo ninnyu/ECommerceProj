@@ -5,5 +5,5 @@ import com.example.potatopaloozac.ecommerceproj.data.network.model.ProductCatego
 import java.util.ArrayList;
 
 public interface ICategoryView {
-    public void showCategoriesList(ArrayList<ProductCategory> categoryList);
+    void showCategoriesList(ArrayList<ProductCategory> categoryList);
 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@android:color/white"
+    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/bt_toolbarHome"
+            android:background="@drawable/home"/>
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="20dp" />
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/bt_toolbarTopsellers"
+            android:background="@drawable/top_sellers"/>
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="20dp" />
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/bt_toolbarFavorites"
+            android:background="@drawable/favorites"/>
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="20dp" />
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/bt_toolbarShoppingcart"
+            android:background="@drawable/shopping_cart"/>
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="20dp" />
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/bt_toolbarUserProfile"
+            android:background="@drawable/user_profile"/>/>
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+    </LinearLayout>
+
+</android.support.v7.widget.Toolbar>

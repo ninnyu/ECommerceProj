@@ -7,6 +7,14 @@ public class UserProfile {
     public UserProfile() {
     }
 
+    public UserProfile(String id, String fname, String lname, String email, String mobile) {
+        this.id = id;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.mobile = mobile;
+    }
+
     public String getId() {
         return id;
     }

@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.potatopaloozac.ecommerceproj.R;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.ProductSubCategory;
-import com.example.potatopaloozac.ecommerceproj.ui.products.CustomClickListener.*;
+import com.example.potatopaloozac.ecommerceproj.utils.CustomClickListener.*;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -40,9 +40,8 @@ public class SubCategoryRecyclerAdapter extends RecyclerView.Adapter<SubCategory
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final ProductSubCategory subCategoryObj = subCategoryList.get(position);
 
-        holder.tv_cid.setText(subCategoryObj.getScid());
         holder.tv_cname.setText(subCategoryObj.getScname());
-        holder.tv_cdescriptioe.setText(subCategoryObj.getScdescription());
+        holder.tv_cdescription.setText(subCategoryObj.getScdescription());
 
         Picasso.get()
                 .load(subCategoryObj.getScimageUrl())
@@ -64,15 +63,14 @@ public class SubCategoryRecyclerAdapter extends RecyclerView.Adapter<SubCategory
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tv_cid, tv_cname, tv_cdescriptioe;
+        TextView tv_cname, tv_cdescription;
         ImageView iv_image;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            tv_cid = itemView.findViewById(R.id.tv_cid);
             tv_cname = itemView.findViewById(R.id.tv_cname);
-            tv_cdescriptioe = itemView.findViewById(R.id.tv_cdescription);
+            tv_cdescription = itemView.findViewById(R.id.tv_cdescription);
             iv_image = itemView.findViewById(R.id.iv_cimage);
         }
     }
