@@ -12,7 +12,10 @@
     <string name="submit">Submit</string>
     <string name="ok">OK</string>
     <string name="invalid">Invalid</string>
-    <string name="shop">NINNYU\'S ECOMMERCE SHOP</string>
+    <string name="category">NINNYU\'S ECOMMERCE SHOP: Categories</string>
+    <string name="subcategory">NINNYU\'S ECOMMERCE SHOP: SubCategory</string>
+    <string name="productlist">NINNYU\'S ECOMMERCE SHOP: Product List</string>
+    <string name="productdetails">NINNYU\'S ECOMMERCE SHOP: Product Details</string>
     <string name="productname">Product Name:</string>
     <string name="quantityInStock">In Stock:</string>
     <string name="price">Price:</string>
@@ -25,6 +28,8 @@
     <string name="addtofavorites">Add to Favorites</string>
     <string name="shoppingcart">SHOPPING CART</string>
     <string name="addtocart">Add to Cart</string>
+    <string name="checkout">CHECKOUT</string>
+    <string name="placeorder">PLACE ORDER</string>
     <string name="userprofile">YOUR ACCOUNT PROFILE</string>
     <string name="userid">User ID:</string>
     <string name="username">Your Name:</string>
@@ -86,9 +91,7 @@
     <string name="loggingin">
         Logging into the server…
     </string>
-    <string name="alertWrongUser">
-        User doesn\'t exist. Please try again…
-    </string>
+    <string name="alertWrongUser">Either the mobile number or password is wrong. Please try again…</string>
     <string name="registering">
         Registering new user…
     </string>

@@ -34,4 +34,5 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.google.dagger:dagger:2.17'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
+    implementation 'com.simplify:simplify-android:3.0.0'
 }

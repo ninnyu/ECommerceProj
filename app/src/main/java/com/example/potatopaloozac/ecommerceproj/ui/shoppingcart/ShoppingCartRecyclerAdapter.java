@@ -1,11 +1,13 @@
 package com.example.potatopaloozac.ecommerceproj.ui.shoppingcart;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,8 +24,10 @@ public class ShoppingCartRecyclerAdapter extends RecyclerView.Adapter<ShoppingCa
 
     private List<ShoppingCart> cartList;
     private CartUpdateRemoveClick clickListener;
+    private Activity activity;
 
-    public ShoppingCartRecyclerAdapter(List<ShoppingCart> cartList, CartUpdateRemoveClick clickListener) {
+    public ShoppingCartRecyclerAdapter(Activity activity, List<ShoppingCart> cartList, CartUpdateRemoveClick clickListener) {
+        this.activity = activity;
         this.cartList = cartList;
         this.clickListener = clickListener;
     }
@@ -55,20 +59,22 @@ public class ShoppingCartRecyclerAdapter extends RecyclerView.Adapter<ShoppingCa
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(holder.iv_image);
 
-        holder.tv_update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int n = Integer.parseInt(holder.et_quantity.getText().toString());
-                clickListener.onUpdateItemClick(v, cartObj, n);
-            }
-        });
+        if (clickListener != null) {
+            holder.tv_update.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int n = Integer.parseInt(holder.et_quantity.getText().toString());
+                    clickListener.onUpdateItemClick(v, cartObj, n);
+                }
+            });
 
-        holder.tv_remove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickListener.onRemoveItemClick(v, cartObj);
-            }
-        });
+            holder.tv_remove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickListener.onRemoveItemClick(v, cartObj);
+                }
+            });
+        }
     }
 
     @Override

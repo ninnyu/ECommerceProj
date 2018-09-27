@@ -1,15 +1,12 @@
 package com.example.potatopaloozac.ecommerceproj.ui.products.productdetails;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +41,8 @@ public class ProductDetailsActivity extends AppCompatActivity implements IProduc
     TextView tv_detailsDesc;
     @BindView(R.id.et_quantity)
     TextView et_quantity;
+    @BindView(R.id.bt_favorite)
+    Button btFavorite;
 
     private IProductDetailsPresenter detailsPresenter;
     private Product product;
@@ -56,15 +55,14 @@ public class ProductDetailsActivity extends AppCompatActivity implements IProduc
 
         setSupportActionBar(toolbar);
 
-        tv_titlebar.setText(R.string.shop);
+        tv_titlebar.setText(R.string.productdetails);
 
         detailsPresenter = new ProductDetailsPresenter(this);
         detailsPresenter.onActivityCreated();
     }
 
-
     @Override
-    public void showProductDetails(Product product) {
+    public void showProductDetails(Product product, boolean isFavorite) {
         this.product = product;
 
         tv_detailsName.setText(product.getPname());
@@ -76,6 +74,9 @@ public class ProductDetailsActivity extends AppCompatActivity implements IProduc
                 .load(product.getImage())
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(this.iv_product);
+
+        if (isFavorite)
+            btFavorite.setBackgroundResource(R.drawable.favorites_filled);
     }
 
     @Override
@@ -113,6 +114,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements IProduc
             }
             case R.id.bt_favorite: {
                 detailsPresenter.onAddToFavoritesButtonClicked(product);
+                btFavorite.setBackgroundResource(R.drawable.favorites_filled);
                 break;
             }
             case R.id.bt_cart: {

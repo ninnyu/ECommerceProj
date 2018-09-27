@@ -45,7 +45,7 @@ public class SubCategoriesActivity extends AppCompatActivity implements ISubCate
 
         rv_subcategories = findViewById(R.id.rv_subcategories);
 
-        tv_titlebar.setText(R.string.shop);
+        tv_titlebar.setText(R.string.subcategory);
 
         setSupportActionBar(toolbar);
 

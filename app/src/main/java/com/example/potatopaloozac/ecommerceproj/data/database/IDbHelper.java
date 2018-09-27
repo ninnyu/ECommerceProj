@@ -16,4 +16,5 @@ public interface IDbHelper {
     void createRow(OnFavoritesAddedListener favoritesAddedListener, Product product);
     void readRow(OnFavoritesListener favoritesListener);
     void deleteRow(OnFavoritesDeletedListener favoritesDeletedListener, Favorite favorite);
+    boolean isFavorite(OnFavoritesListener favoritesListener, Product product);
 }

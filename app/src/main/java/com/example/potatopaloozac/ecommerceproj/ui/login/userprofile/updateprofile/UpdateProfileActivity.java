@@ -19,23 +19,23 @@ import butterknife.OnClick;
 
 public class UpdateProfileActivity extends AppCompatActivity implements IUpdateProfileView {
 
-    @BindView(R.id.et_registerfname)
-    EditText etRegisterfname;
-    @BindView(R.id.et_registerlname)
-    EditText etRegisterlname;
-    @BindView(R.id.tv_userValidation)
+    @BindView(R.id.et_updateFname)
+    EditText etUpdateFname;
+    @BindView(R.id.et_updateLname)
+    EditText etUpdateLname;
+    @BindView(R.id.tv_updateUserValidation)
     TextView tvUserValidation;
-    @BindView(R.id.et_registeraddress)
-    EditText etRegisteraddress;
-    @BindView(R.id.tv_addressValidation)
+    @BindView(R.id.et_updateAddress)
+    EditText etUpdateAddress;
+    @BindView(R.id.tv_updateAddressValidation)
     TextView tvAddressValidation;
-    @BindView(R.id.et_registeremail)
-    EditText etRegisteremail;
-    @BindView(R.id.tv_emailValidation)
+    @BindView(R.id.et_updateEmail)
+    EditText etUpdateEmail;
+    @BindView(R.id.tv_updateEmailValidation)
     TextView tvEmailValidation;
-    @BindView(R.id.et_registermobile)
-    EditText etRegistermobile;
-    @BindView(R.id.tv_mobileValidation)
+    @BindView(R.id.et_updateMobile)
+    EditText etUpdateMobile;
+    @BindView(R.id.tv_updateMobileValidation)
     TextView tvMobileValidation;
     @BindView(R.id.bt_updateProfile)
     Button btUpdateProfile;
@@ -93,11 +93,11 @@ public class UpdateProfileActivity extends AppCompatActivity implements IUpdateP
     public void onViewClicked() {
         UserProfile profile = new UserProfile();
 
-        profile.setFname(etRegisterfname.getText().toString());
-        profile.setLname(etRegisterlname.getText().toString());
-        profile.setAddress(etRegisteraddress.getText().toString());
-        profile.setEmail(etRegisteremail.getText().toString());
-        profile.setMobile(etRegistermobile.getText().toString());
+        profile.setFname(etUpdateFname.getText().toString());
+        profile.setLname(etUpdateLname.getText().toString());
+        profile.setAddress(etUpdateAddress.getText().toString());
+        profile.setEmail(etUpdateEmail.getText().toString());
+        profile.setMobile(etUpdateMobile.getText().toString());
 
         updateProfilePresenter.onUpdateButtonClicked(profile);
     }

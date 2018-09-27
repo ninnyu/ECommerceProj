@@ -59,6 +59,11 @@ public class DataManager implements IDataManager {
     }
 
     @Override
+    public boolean isFavorite(OnFavoritesListener favoritesListener, Product product) {
+        return dbHelper.isFavorite(favoritesListener, product);
+    }
+
+    @Override
     public void getCategoryList(OnCategoryListener categoryListener) {
         networkHelper.getCategoryList(categoryListener);
     }

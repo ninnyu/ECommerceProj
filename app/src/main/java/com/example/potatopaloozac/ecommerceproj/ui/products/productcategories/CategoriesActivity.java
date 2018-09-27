@@ -53,7 +53,7 @@ public class CategoriesActivity extends AppCompatActivity implements ICategoryVi
 
         rv_categories = findViewById(R.id.rv_categories);
 
-        tv_titlebar.setText(R.string.shop);
+        tv_titlebar.setText(R.string.category);
 
         setSupportActionBar(toolbar);
 

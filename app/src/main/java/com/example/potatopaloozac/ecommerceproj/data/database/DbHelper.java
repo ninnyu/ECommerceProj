@@ -141,7 +141,7 @@ public class DbHelper implements IDbHelper {
                 String desc = cursor.getString(cursor.getColumnIndex(FavoritesEntry.COLUMN_DESC));
                 String image = cursor.getString(cursor.getColumnIndex(FavoritesEntry.COLUMN_IMAGE));
 
-                Product product = new Product(id, name, price, desc, image);
+                Product product = new Product(id, name, quantity, price, desc, image);
                 Favorite favoriteItem = new Favorite(product);
                 favoriteList.add(favoriteItem);
             } while (cursor.moveToNext());
@@ -158,6 +158,17 @@ public class DbHelper implements IDbHelper {
         db.execSQL(DELETE_ROW);
 
         favoritesDeletedListener.deletedFromFavorites(true);
+    }
+
+    @Override
+    public boolean isFavorite(IDataManager.OnFavoritesListener favoritesListener, Product product) {
+        Cursor cursor = db.rawQuery("SELECT * FROM " + FavoritesEntry.TABLENAME_FAVORITES
+                + " WHERE " + FavoritesEntry.COLUMN_ID + " = '" + product.getId() + "'", null);
+
+        if (cursor.moveToFirst())
+            return true;
+        else
+            return false;
     }
 
     public void updateCart(Product product, int n) {

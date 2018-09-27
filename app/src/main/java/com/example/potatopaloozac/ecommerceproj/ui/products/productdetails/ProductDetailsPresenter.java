@@ -6,9 +6,12 @@ import android.util.Log;
 
 import com.example.potatopaloozac.ecommerceproj.data.DataManager;
 import com.example.potatopaloozac.ecommerceproj.data.IDataManager;
+import com.example.potatopaloozac.ecommerceproj.data.database.model.Favorite;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.Product;
 
-public class ProductDetailsPresenter implements IProductDetailsPresenter, IDataManager.OnCartAddedListener, IDataManager.OnFavoritesAddedListener {
+import java.util.ArrayList;
+
+public class ProductDetailsPresenter implements IProductDetailsPresenter, IDataManager.OnCartAddedListener, IDataManager.OnFavoritesAddedListener, IDataManager.OnFavoritesListener {
 
     private IDataManager dataManager;
     private IProductDetailsView productView;
@@ -23,8 +26,8 @@ public class ProductDetailsPresenter implements IProductDetailsPresenter, IDataM
     @Override
     public void onActivityCreated() {
         Product product = dataManager.getDetails(activity);
-
-        productView.showProductDetails(product);
+        boolean isFavorite = dataManager.isFavorite(this, product);
+        productView.showProductDetails(product, isFavorite);
     }
 
     @Override
@@ -52,5 +55,10 @@ public class ProductDetailsPresenter implements IProductDetailsPresenter, IDataM
             productView.showToast("Added to favorites");
         else
             productView.showToast("Failed to add to favorites");
+    }
+
+    @Override
+    public void readFavorites(ArrayList<Favorite> favoriteList) {
+
     }
 }

@@ -1,5 +1,6 @@
 package com.example.potatopaloozac.ecommerceproj.ui.shoppingcart;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +18,7 @@ import com.example.potatopaloozac.ecommerceproj.R;
 import com.example.potatopaloozac.ecommerceproj.data.database.model.ShoppingCart;
 import com.example.potatopaloozac.ecommerceproj.ui.favorites.FavoritesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.login.userprofile.UserProfileActivity;
+import com.example.potatopaloozac.ecommerceproj.ui.order.OrderActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.products.productcategories.CategoriesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.topseller.TopSellerActivity;
 import com.example.potatopaloozac.ecommerceproj.utils.CustomClickListener.*;
@@ -64,13 +67,14 @@ public class ShoppingCartActivity extends AppCompatActivity implements IShopping
 
     @Override
     public void showCart(ArrayList<ShoppingCart> cartList) {
+
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
 
         rv_cart.setLayoutManager(manager);
         rv_cart.setItemAnimator(new DefaultItemAnimator());
 
         if (cartList != null) {
-            ShoppingCartRecyclerAdapter recyclerAdapter = new ShoppingCartRecyclerAdapter(cartList, new CartUpdateRemoveClick() {
+            ShoppingCartRecyclerAdapter recyclerAdapter = new ShoppingCartRecyclerAdapter(this, cartList, new CartUpdateRemoveClick() {
                 @Override
                 public void onUpdateItemClick(View v, ShoppingCart cart, int n) {
                     cartPresenter.onUpdateButtonClicked(v, cart, n);
@@ -85,7 +89,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements IShopping
         }
     }
 
-    @OnClick({R.id.bt_toolbarHome, R.id.bt_toolbarTopsellers, R.id.bt_toolbarFavorites, R.id.bt_toolbarUserProfile})
+    @OnClick({R.id.bt_toolbarHome, R.id.bt_toolbarTopsellers, R.id.bt_toolbarFavorites, R.id.bt_toolbarUserProfile, R.id.bt_cartCheckout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_toolbarHome: {
@@ -105,6 +109,11 @@ public class ShoppingCartActivity extends AppCompatActivity implements IShopping
             }
             case R.id.bt_toolbarUserProfile: {
                 Intent i = new Intent(this, UserProfileActivity.class);
+                startActivity(i);
+                break;
+            }
+            case R.id.bt_cartCheckout: {
+                Intent i = new Intent(this, OrderActivity.class);
                 startActivity(i);
                 break;
             }

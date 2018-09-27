@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titlebar"
+        android:layout_above="@+id/layout_orderTotalPrice"
+        android:scrollbars="vertical">
+    </android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/layout_orderTotalPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bt_placeOrder">
+        <LinearLayout
+            android:id="@+id/totalPrice_linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/totalprice"/>
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:id="@+id/tv_orderTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardEditor_linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/totalPrice_linearLayout"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+            <com.simplify.android.sdk.CardEditor
+                android:id="@+id/card_editor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:enabled="true"
+                app:iconColor="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/bt_placeOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/placeorder"/>
+
+    <include
+        android:id="@+id/titlebar"
+        layout="@layout/titlebar" />
+
+</RelativeLayout>

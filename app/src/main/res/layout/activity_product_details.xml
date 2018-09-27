@@ -98,25 +98,22 @@
                     android:gravity="center">
                     <Button
                         android:id="@+id/bt_favorite"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/addtofavorites"/>
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/favorites"/>
                     <Space
-                        android:layout_width="5dp"
-                        android:layout_height="50dp" />
-                    <Button
-                        android:id="@+id/bt_cart"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/addtocart"/>
-                    <Space
-                        android:layout_width="5dp"
+                        android:layout_width="100dp"
                         android:layout_height="50dp" />
                     <EditText
                         android:id="@+id/et_quantity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/quantity"/>
+                    <Button
+                        android:id="@+id/bt_cart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/addtocart"/>
                 </LinearLayout>
 
         </LinearLayout>

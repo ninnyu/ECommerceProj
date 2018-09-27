@@ -32,12 +32,13 @@ public class SplashActivity extends AppCompatActivity {
                 super.run();
                 try {
                     imageView.startAnimation(rotate);
-                    Thread.sleep(3000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 Intent i = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(i);
+                finish();
             }
         };
 

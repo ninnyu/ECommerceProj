@@ -54,7 +54,7 @@
     <string name="alertTimeout">"Hora de término de la sesión "</string>
     <string name="alertTimeoutMessage">"Por favor inicie sesión de nuevo. "</string>
     <string name="loggingin">"Iniciar sesión en el servidor ... "</string>
-    <string name="alertWrongUser">"El usuario no existe Inténtalo de nuevo… "</string>
+    <string name="alertWrongUser">"O el número de móvil o la contraseña son incorrectos. Inténtalo de nuevo… "</string>
     <string name="registering">"Registrando un nuevo usuario ... "</string>
     <string name="alertUpdateSuccess">"Actualización de perfil exitosa "</string>
     <string name="alertUpdateSuccessMessage">"Su perfil ha sido actualizado con la nueva información. "</string>

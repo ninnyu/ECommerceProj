@@ -45,7 +45,7 @@ public class ProductsActivity extends AppCompatActivity implements IProductView 
 
         rv_products = findViewById(R.id.rv_products);
 
-        tv_titlebar.setText(R.string.shop);
+        tv_titlebar.setText(R.string.productlist);
 
         setSupportActionBar(toolbar);
 
