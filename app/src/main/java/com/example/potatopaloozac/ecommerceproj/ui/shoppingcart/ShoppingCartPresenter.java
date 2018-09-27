@@ -1,14 +1,15 @@
 package com.example.potatopaloozac.ecommerceproj.ui.shoppingcart;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.View;
 
 import com.example.potatopaloozac.ecommerceproj.data.DataManager;
 import com.example.potatopaloozac.ecommerceproj.data.IDataManager;
-import com.example.potatopaloozac.ecommerceproj.data.database.DbHelper;
+import com.example.potatopaloozac.ecommerceproj.data.database.model.ShoppingCart;
 
-public class ShoppingCartPresenter implements IShoppingCartPresenter {
+import java.util.ArrayList;
+
+public class ShoppingCartPresenter implements IShoppingCartPresenter, IDataManager.OnCartListener, IDataManager.OnCartUpdatedListener, IDataManager.OnCartItemDeletedListener {
 
     private IShoppingCartView cartView;
     private IDataManager dataManager;
@@ -22,16 +23,35 @@ public class ShoppingCartPresenter implements IShoppingCartPresenter {
 
     @Override
     public void onActivityCreated() {
-        //dataManager.
+        dataManager.readRow(this);
     }
 
     @Override
-    public void getCartData() {
-
+    public void onUpdateButtonClicked(View v, ShoppingCart cart, int n) {
+        dataManager.updateRow(this, cart, n);
     }
 
     @Override
-    public void onButtonClicked(View v) {
+    public void onRemoveButtonClicked(View v, ShoppingCart cart) {
+        dataManager.deleteRow(this, cart);
+    }
 
+    @Override
+    public void readCart(ArrayList<ShoppingCart> cartList) {
+        cartView.showCart(cartList);
+    }
+
+    @Override
+    public void updatedCart(boolean isUpdated) {
+        if (isUpdated) {
+            onActivityCreated();
+        }
+    }
+
+    @Override
+    public void deletedItemFromCart(boolean isDeleted) {
+        if (isDeleted) {
+            onActivityCreated();
+        }
     }
 }

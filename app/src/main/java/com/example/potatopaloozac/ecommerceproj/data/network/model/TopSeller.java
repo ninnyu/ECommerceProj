@@ -1,8 +1,13 @@
 package com.example.potatopaloozac.ecommerceproj.data.network.model;
 
+
 public class TopSeller {
 
     private String id, name, deal, rating, logo;
+
+    public TopSeller() {
+
+    }
 
     public TopSeller(String id, String name, String deal, String rating, String logo) {
         this.id = id;

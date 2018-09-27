@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.potatopaloozac.ecommerceproj.R;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.ProductCategory;
+import com.example.potatopaloozac.ecommerceproj.ui.favorites.FavoritesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.login.userprofile.UserProfileActivity;
 import com.example.potatopaloozac.ecommerceproj.utils.CustomClickListener.CategoryClick;
 import com.example.potatopaloozac.ecommerceproj.ui.products.productsubcategories.SubCategoriesActivity;
@@ -69,7 +70,7 @@ public class CategoriesActivity extends AppCompatActivity implements ICategoryVi
         rv_categories.setItemAnimator(new DefaultItemAnimator());
 
         if (categoryList != null) {
-            CategoryRecyclerAdapter recyclerAdapter = new CategoryRecyclerAdapter(categoryList, this, new CategoryClick() {
+            CategoryRecyclerAdapter recyclerAdapter = new CategoryRecyclerAdapter(categoryList, new CategoryClick() {
                 @Override
                 public void onItemClick(View v, ProductCategory category) {
                     Bundle b = new Bundle();
@@ -93,7 +94,8 @@ public class CategoriesActivity extends AppCompatActivity implements ICategoryVi
                 break;
             }
             case R.id.bt_toolbarFavorites: {
-                Toast.makeText(this, "clicked favorites", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, FavoritesActivity.class);
+                startActivity(i);
                 break;
             }
             case R.id.bt_toolbarShoppingcart: {

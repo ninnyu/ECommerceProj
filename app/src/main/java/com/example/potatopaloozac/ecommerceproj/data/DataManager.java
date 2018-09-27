@@ -2,11 +2,12 @@ package com.example.potatopaloozac.ecommerceproj.data;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.potatopaloozac.ecommerceproj.data.database.DbHelper;
 import com.example.potatopaloozac.ecommerceproj.data.database.IDbHelper;
+import com.example.potatopaloozac.ecommerceproj.data.database.model.Favorite;
+import com.example.potatopaloozac.ecommerceproj.data.database.model.ShoppingCart;
 import com.example.potatopaloozac.ecommerceproj.data.network.INetworkHelper;
 import com.example.potatopaloozac.ecommerceproj.data.network.NetworkHelper;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.Product;
@@ -23,23 +24,38 @@ public class DataManager implements IDataManager {
     }
 
     @Override
-    public void createRow(Product product, int n, int inCart, int inFavorites) {
-        dbHelper.createRow(product, n, inCart, inFavorites);
+    public void createRow(OnCartAddedListener cartAddedListener, Product product, int n) {
+        dbHelper.createRow(cartAddedListener, product, n);
     }
 
     @Override
-    public void readRow(Product product) {
-        dbHelper.readRow(product);
+    public void readRow(OnCartListener cartListener) {
+        dbHelper.readRow(cartListener);
     }
 
     @Override
-    public void updateRow(Product product, int n, int inCart, int inFavorites) {
-        dbHelper.updateRow(product, n, inCart, inFavorites);
+    public void updateRow(OnCartUpdatedListener cartUpdatedListener, ShoppingCart cart, int n) {
+        dbHelper.updateRow(cartUpdatedListener, cart, n);
     }
 
     @Override
-    public void deleteRow(Product product) {
-        dbHelper.deleteRow(product);
+    public void deleteRow(OnCartItemDeletedListener itemDeletedListener, ShoppingCart cart) {
+        dbHelper.deleteRow(itemDeletedListener, cart);
+    }
+
+    @Override
+    public void createRow(OnFavoritesAddedListener favoritesAddedListener, Product product) {
+        dbHelper.createRow(favoritesAddedListener, product);
+    }
+
+    @Override
+    public void readRow(OnFavoritesListener favoritesListener) {
+        dbHelper.readRow(favoritesListener);
+    }
+
+    @Override
+    public void deleteRow(OnFavoritesDeletedListener favoritesDeletedListener, Favorite favorite) {
+        dbHelper.deleteRow(favoritesDeletedListener, favorite);
     }
 
     @Override
@@ -61,8 +77,7 @@ public class DataManager implements IDataManager {
     public Product getDetails(Activity activity) {
         Bundle b = activity.getIntent().getExtras();
         String[] arr = b.getStringArray("productdetails");
-        Product product = new Product(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
-        return product;
+        return new Product(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
     }
 
     @Override

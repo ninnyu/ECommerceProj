@@ -4,6 +4,10 @@ public class Login {
 
     private String mobile, password;
 
+    public Login() {
+
+    }
+
     public Login(String mobile, String password) {
         this.mobile = mobile;
         this.password = password;

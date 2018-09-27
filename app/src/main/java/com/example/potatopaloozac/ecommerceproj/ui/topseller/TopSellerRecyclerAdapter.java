@@ -1,6 +1,5 @@
 package com.example.potatopaloozac.ecommerceproj.ui.topseller;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.potatopaloozac.ecommerceproj.R;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.TopSeller;
-import com.example.potatopaloozac.ecommerceproj.ui.products.productsubcategories.SubCategoryRecyclerAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -19,11 +17,9 @@ import java.util.List;
 public class TopSellerRecyclerAdapter extends RecyclerView.Adapter<TopSellerRecyclerAdapter.MyViewHolder>  {
 
     private List<TopSeller> sellerList;
-    private Context context;
 
-    public TopSellerRecyclerAdapter(List<TopSeller> sellerList, Context context) {
+    public TopSellerRecyclerAdapter(List<TopSeller> sellerList) {
         this.sellerList = sellerList;
-        this.context = context;
     }
 
     @NonNull

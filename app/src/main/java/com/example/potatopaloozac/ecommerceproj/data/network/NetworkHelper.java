@@ -8,8 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -17,6 +15,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.example.potatopaloozac.ecommerceproj.data.network.model.LoginModule;
+import com.example.potatopaloozac.ecommerceproj.utils.DaggerMyComponent;
+import com.example.potatopaloozac.ecommerceproj.utils.MyComponent;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.TopSeller;
 import com.example.potatopaloozac.ecommerceproj.utils.AppController;
 import com.example.potatopaloozac.ecommerceproj.R;
@@ -34,6 +35,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 public class NetworkHelper implements INetworkHelper {
 
     private ArrayList<ProductCategory> categoryList;
@@ -44,18 +47,25 @@ public class NetworkHelper implements INetworkHelper {
     private ProductCategory productCategory;
     private ProductSubCategory productSubCategory;
     private Product product;
+
     private TopSeller seller;
 
-    private Login login;
+    @Inject
+    Login login;    //Dagger2-ing here
+
     private UserProfile userProfile;
 
     private Context context;
     private ProgressDialog pDialog;
     private SharedPreferences sp;
 
+    private MyComponent component;
+
     public NetworkHelper(Context context) {
         this.context = context;
         sp = context.getSharedPreferences("userlogin", Context.MODE_PRIVATE);
+        component = DaggerMyComponent.builder().loginModule(new LoginModule()).build();
+        component.inject(this);
     }
 
     @Override
@@ -134,7 +144,7 @@ public class NetworkHelper implements INetworkHelper {
 
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("cid", cid);
-        editor.commit();
+        editor.apply();
 
         String url = "http://rjtmobile.com/ansari/shopingcart/androidapp/cust_sub_category.php?Id=" + cid + "&api_key="
                 + sp.getString("apikey","") + "&user_id=" + sp.getString("id", "");
@@ -204,7 +214,7 @@ public class NetworkHelper implements INetworkHelper {
 
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("scid", scid);
-        editor.commit();
+        editor.apply();
 
         String url = "http://rjtmobile.com/ansari/shopingcart/androidapp/product_details.php?cid=" + cid + "&scid="
                 + scid + "&api_key=" + sp.getString("apikey","") + "&user_id=" + sp.getString("id", "");
@@ -264,11 +274,13 @@ public class NetworkHelper implements INetworkHelper {
     @Override
     public void login(final IDataManager.OnLoginListener loginListener) {
 
-        login = new Login(sp.getString("mobile", ""), sp.getString("password", ""));
+        //******************** Dagger2 at work ********************
+        login.setMobile(sp.getString("mobile", ""));
+        login.setPassword(sp.getString("password", ""));
 
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("isLoggedin", false);
-        editor.commit();
+        editor.apply();
 
         pDialog = new ProgressDialog(context);
         pDialog.setMessage(context.getResources().getString(R.string.loggingin));
@@ -282,7 +294,6 @@ public class NetworkHelper implements INetworkHelper {
             public void onResponse(JSONArray response) {
                 if (response != null) {
                     pDialog.dismiss();
-                    Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show();
                     try {
                         JSONObject a = response.getJSONObject(0);
 
@@ -293,7 +304,7 @@ public class NetworkHelper implements INetworkHelper {
                                 mobile = a.getString("mobile"),
                                 appapikey = a.getString("appapikey ");
 
-                        loginListener.userLogin(login);
+                        loginListener.userLogin();
 
                         SharedPreferences.Editor editor = sp.edit();
                         editor.putString("userid", id);
@@ -303,7 +314,7 @@ public class NetworkHelper implements INetworkHelper {
                         editor.putString("usermobile", mobile);
                         editor.putString("apikey", appapikey);
                         editor.putString("id", id);
-                        editor.commit();
+                        editor.apply();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -366,7 +377,7 @@ public class NetworkHelper implements INetworkHelper {
                     editor.putString("userlname", profile.getLname());
                     editor.putString("useremail", profile.getEmail());
                     editor.putString("usermobile", profile.getMobile());
-                    editor.commit();
+                    editor.apply();
 
                     profileUpdateListener.updateProfile(true);
                 } else {

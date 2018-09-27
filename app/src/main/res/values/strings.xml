@@ -14,14 +14,14 @@
     <string name="invalid">Invalid</string>
     <string name="shop">NINNYU\'S ECOMMERCE SHOP</string>
     <string name="productname">Product Name:</string>
-    <string name="quantity">In Stock:</string>
+    <string name="quantityInStock">In Stock:</string>
     <string name="price">Price:</string>
     <string name="desc">Description:</string>
     <string name="topsellers">TOP SELLERS</string>
     <string name="sellername">Seller Name:</string>
     <string name="sellerdeal">Seller\'s Deal:</string>
     <string name="sellerrating">Seller\'s Rating:</string>
-    <string name="favorites">FAVORITES</string>
+    <string name="favorite">FAVORITES</string>
     <string name="addtofavorites">Add to Favorites</string>
     <string name="shoppingcart">SHOPPING CART</string>
     <string name="addtocart">Add to Cart</string>
@@ -32,6 +32,11 @@
     <string name="useremail">Email:</string>
     <string name="usermobile">Mobile:</string>
     <string name="updateprofile">Update Profile</string>
+    <string name="quantity">QUANTITY</string>
+    <string name="quantitySmall">Quantity:</string>
+    <string name="totalprice">Total Price:</string>
+    <string name="remove">Remove</string>
+    <string name="update">Update Item</string>
 
     <string name="userValidation">
         First and last name can only have letters and must be between 4 and 20 characters.
@@ -67,10 +72,10 @@
         An account with that mobile number already exists. Please enter a different number.
     </string>
     <string name="loadingData">
-        Loading data from the server...
+        Loading data from the server…
     </string>
     <string name="serverNotResponding">
-        Server is not responding...
+        Server is not responding…
     </string>
     <string name="alertTimeout">
         Session Timeout
@@ -79,13 +84,13 @@
         Please login again.
     </string>
     <string name="loggingin">
-        Logging into the server...
+        Logging into the server…
     </string>
     <string name="alertWrongUser">
-        User doesn\'t exist. Please try again...
+        User doesn\'t exist. Please try again…
     </string>
     <string name="registering">
-        Registering new user...
+        Registering new user…
     </string>
     <string name="alertUpdateSuccess">
         Profile Update Success

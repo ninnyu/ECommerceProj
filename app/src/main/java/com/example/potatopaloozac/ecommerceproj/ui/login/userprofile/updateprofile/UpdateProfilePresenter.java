@@ -17,11 +17,6 @@ public class UpdateProfilePresenter implements IUpdateProfilePresenter, IDataMan
     }
 
     @Override
-    public void onActivityCreated() {
-
-    }
-
-    @Override
     public void onUpdateButtonClicked(UserProfile profile) {
         if (validate(profile)) {
             dataManager.updateProfile(this, profile);

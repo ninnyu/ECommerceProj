@@ -1,7 +1,5 @@
 package com.example.potatopaloozac.ecommerceproj.ui.topseller;
 
-import android.app.Activity;
-
 import com.example.potatopaloozac.ecommerceproj.data.DataManager;
 import com.example.potatopaloozac.ecommerceproj.data.IDataManager;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.TopSeller;
@@ -12,12 +10,10 @@ public class TopSellerPresenter implements ITopSellerPresenter, IDataManager.OnT
 
     private ITopSellerView sellerView;
     private IDataManager dataManager;
-    private Activity activity;
 
     public TopSellerPresenter(TopSellerActivity activity) {
         dataManager = new DataManager(activity);
         sellerView = activity;
-        this.activity = activity;
     }
 
     @Override

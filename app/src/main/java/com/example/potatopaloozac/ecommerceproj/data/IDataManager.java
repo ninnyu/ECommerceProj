@@ -3,9 +3,9 @@ package com.example.potatopaloozac.ecommerceproj.data;
 import android.app.Activity;
 
 import com.example.potatopaloozac.ecommerceproj.data.database.IDbHelper;
+import com.example.potatopaloozac.ecommerceproj.data.database.model.Favorite;
 import com.example.potatopaloozac.ecommerceproj.data.database.model.ShoppingCart;
 import com.example.potatopaloozac.ecommerceproj.data.network.INetworkHelper;
-import com.example.potatopaloozac.ecommerceproj.data.network.model.Login;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.Product;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.ProductCategory;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.ProductSubCategory;
@@ -19,11 +19,32 @@ public interface IDataManager extends IDbHelper, INetworkHelper {
 
     Product getDetails(Activity activity);
 
-    interface OnResponseListener {
-        void getCartList(ArrayList<ShoppingCart> cartList);
-        void getCartProductList(List<ShoppingCart> cartProductList);
-        void getCartOnlyList(List<ShoppingCart> cartOnlyProductList);
-        void clearCart(int cartCode);
+    interface OnCartAddedListener {
+        void addedToCart(boolean isAdded);
+    }
+
+    interface OnCartListener {
+        void readCart(ArrayList<ShoppingCart> cartList);
+    }
+
+    interface OnCartUpdatedListener {
+        void updatedCart(boolean isUpdated);
+    }
+
+    interface OnCartItemDeletedListener {
+        void deletedItemFromCart(boolean isDeleted);
+    }
+
+    interface OnFavoritesListener {
+        void readFavorites(ArrayList<Favorite> favoriteList);
+    }
+
+    interface OnFavoritesAddedListener {
+        void addedToFavorites(boolean isAdded);
+    }
+
+    interface OnFavoritesDeletedListener {
+        void deletedFromFavorites(boolean isDeleted);
     }
 
     interface OnCategoryListener {
@@ -39,7 +60,7 @@ public interface IDataManager extends IDbHelper, INetworkHelper {
     }
 
     interface OnLoginListener {
-        void userLogin(Login login);
+        void userLogin();
     }
 
     interface OnUserProfileListener {

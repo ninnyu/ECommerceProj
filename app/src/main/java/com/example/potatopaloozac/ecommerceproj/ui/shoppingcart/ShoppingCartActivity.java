@@ -14,9 +14,11 @@ import android.widget.Toast;
 
 import com.example.potatopaloozac.ecommerceproj.R;
 import com.example.potatopaloozac.ecommerceproj.data.database.model.ShoppingCart;
+import com.example.potatopaloozac.ecommerceproj.ui.favorites.FavoritesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.login.userprofile.UserProfileActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.products.productcategories.CategoriesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.topseller.TopSellerActivity;
+import com.example.potatopaloozac.ecommerceproj.utils.CustomClickListener.*;
 
 import java.util.ArrayList;
 
@@ -41,8 +43,8 @@ public class ShoppingCartActivity extends AppCompatActivity implements IShopping
     @BindView(R.id.tv_titlebar)
     TextView tv_titlebar;
 
-    RecyclerView rv_cart;
-    IShoppingCartPresenter cartPresenter;
+    private RecyclerView rv_cart;
+    private IShoppingCartPresenter cartPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,17 @@ public class ShoppingCartActivity extends AppCompatActivity implements IShopping
         rv_cart.setItemAnimator(new DefaultItemAnimator());
 
         if (cartList != null) {
-            ShoppingCartRecyclerAdapter recyclerAdapter = new ShoppingCartRecyclerAdapter(cartList, this);
+            ShoppingCartRecyclerAdapter recyclerAdapter = new ShoppingCartRecyclerAdapter(cartList, new CartUpdateRemoveClick() {
+                @Override
+                public void onUpdateItemClick(View v, ShoppingCart cart, int n) {
+                    cartPresenter.onUpdateButtonClicked(v, cart, n);
+                }
+
+                @Override
+                public void onRemoveItemClick(View v, ShoppingCart cart) {
+                    cartPresenter.onRemoveButtonClicked(v, cart);
+                }
+            });
             rv_cart.setAdapter(recyclerAdapter);
         }
     }
@@ -87,7 +99,8 @@ public class ShoppingCartActivity extends AppCompatActivity implements IShopping
                 break;
             }
             case R.id.bt_toolbarFavorites: {
-                Toast.makeText(this, "clicked favorites", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, FavoritesActivity.class);
+                startActivity(i);
                 break;
             }
             case R.id.bt_toolbarUserProfile: {

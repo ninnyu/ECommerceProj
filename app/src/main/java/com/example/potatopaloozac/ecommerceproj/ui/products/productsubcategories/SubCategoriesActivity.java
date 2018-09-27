@@ -8,12 +8,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.potatopaloozac.ecommerceproj.R;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.ProductSubCategory;
+import com.example.potatopaloozac.ecommerceproj.ui.favorites.FavoritesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.login.userprofile.UserProfileActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.products.productcategories.CategoriesActivity;
 import com.example.potatopaloozac.ecommerceproj.utils.CustomClickListener.SubCategoryClick;
@@ -63,7 +63,7 @@ public class SubCategoriesActivity extends AppCompatActivity implements ISubCate
         rv_subcategories.setItemAnimator(new DefaultItemAnimator());
 
         if (subCategoryList != null) {
-            SubCategoryRecyclerAdapter recyclerAdapter = new SubCategoryRecyclerAdapter(subCategoryList, this, new SubCategoryClick() {
+            SubCategoryRecyclerAdapter recyclerAdapter = new SubCategoryRecyclerAdapter(subCategoryList, new SubCategoryClick() {
                 @Override
                 public void onItemClick(View v, ProductSubCategory subCategory) {
                     Bundle b = new Bundle();
@@ -92,7 +92,8 @@ public class SubCategoriesActivity extends AppCompatActivity implements ISubCate
                 break;
             }
             case R.id.bt_toolbarFavorites: {
-                Toast.makeText(this, "clicked favorites", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, FavoritesActivity.class);
+                startActivity(i);
                 break;
             }
             case R.id.bt_toolbarShoppingcart: {

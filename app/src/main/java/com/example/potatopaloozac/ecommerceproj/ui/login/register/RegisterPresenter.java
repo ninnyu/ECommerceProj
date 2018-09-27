@@ -1,7 +1,5 @@
 package com.example.potatopaloozac.ecommerceproj.ui.login.register;
 
-import android.content.Context;
-
 import com.example.potatopaloozac.ecommerceproj.data.DataManager;
 import com.example.potatopaloozac.ecommerceproj.data.IDataManager;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.UserProfile;
@@ -12,17 +10,10 @@ public class RegisterPresenter implements IRegisterPresenter, IDataManager.OnReg
 
     private IDataManager dataManager;
     private IRegisterView registerView;
-    private Context context;
 
     public RegisterPresenter (RegisterActivity activity) {
         dataManager = new DataManager(activity);
         registerView = activity;
-        context = activity;
-    }
-
-    @Override
-    public void onActivityCreated() {
-
     }
 
     @Override

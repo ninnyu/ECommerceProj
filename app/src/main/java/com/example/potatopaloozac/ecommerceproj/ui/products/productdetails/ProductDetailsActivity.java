@@ -1,17 +1,21 @@
 package com.example.potatopaloozac.ecommerceproj.ui.products.productdetails;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.potatopaloozac.ecommerceproj.R;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.Product;
+import com.example.potatopaloozac.ecommerceproj.ui.favorites.FavoritesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.login.userprofile.UserProfileActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.products.productcategories.CategoriesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.shoppingcart.ShoppingCartActivity;
@@ -38,8 +42,11 @@ public class ProductDetailsActivity extends AppCompatActivity implements IProduc
     TextView tv_detailsPrice;
     @BindView(R.id.tv_detailsDesc)
     TextView tv_detailsDesc;
+    @BindView(R.id.et_quantity)
+    TextView et_quantity;
 
     private IProductDetailsPresenter detailsPresenter;
+    private Product product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +65,10 @@ public class ProductDetailsActivity extends AppCompatActivity implements IProduc
 
     @Override
     public void showProductDetails(Product product) {
+        this.product = product;
+
         tv_detailsName.setText(product.getPname());
-        tv_detailsQuantity.setText(product.getQuantity());
+        tv_detailsQuantity.setText(product.getQuantityInStock());
         tv_detailsPrice.setText(product.getPrice());
         tv_detailsDesc.setText(product.getDescription());
 
@@ -67,6 +76,11 @@ public class ProductDetailsActivity extends AppCompatActivity implements IProduc
                 .load(product.getImage())
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(this.iv_product);
+    }
+
+    @Override
+    public void showToast(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 
     @OnClick({R.id.bt_toolbarHome, R.id.bt_toolbarTopsellers, R.id.bt_toolbarFavorites, R.id.bt_toolbarShoppingcart, R.id.bt_toolbarUserProfile, R.id.bt_favorite, R.id.bt_cart})
@@ -83,7 +97,8 @@ public class ProductDetailsActivity extends AppCompatActivity implements IProduc
                 break;
             }
             case R.id.bt_toolbarFavorites: {
-                Toast.makeText(this, "clicked favorites", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, FavoritesActivity.class);
+                startActivity(i);
                 break;
             }
             case R.id.bt_toolbarShoppingcart: {
@@ -97,9 +112,11 @@ public class ProductDetailsActivity extends AppCompatActivity implements IProduc
                 break;
             }
             case R.id.bt_favorite: {
+                detailsPresenter.onAddToFavoritesButtonClicked(product);
                 break;
             }
             case R.id.bt_cart: {
+                detailsPresenter.onAddToCartButtonClicked(product, Integer.parseInt(et_quantity.getText().toString()));
                 break;
             }
         }

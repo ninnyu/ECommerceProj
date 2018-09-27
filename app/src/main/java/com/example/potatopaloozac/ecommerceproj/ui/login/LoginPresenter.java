@@ -2,10 +2,10 @@ package com.example.potatopaloozac.ecommerceproj.ui.login;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.example.potatopaloozac.ecommerceproj.data.DataManager;
 import com.example.potatopaloozac.ecommerceproj.data.IDataManager;
-import com.example.potatopaloozac.ecommerceproj.data.network.model.Login;
 
 public class LoginPresenter implements ILoginPresenter, IDataManager.OnLoginListener {
 
@@ -33,13 +33,13 @@ public class LoginPresenter implements ILoginPresenter, IDataManager.OnLoginList
 
         editor.putString("mobile", mobile);
         editor.putString("password", password);
-        editor.commit();
+        editor.apply();
 
         dataManager.login(this);
     }
 
     @Override
-    public void userLogin (Login login) {
+    public void userLogin() {
         loginView.loginSuccessful();
     }
 }

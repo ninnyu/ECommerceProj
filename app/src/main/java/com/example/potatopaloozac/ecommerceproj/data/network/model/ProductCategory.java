@@ -4,6 +4,10 @@ public class ProductCategory {
 
     private String cid, cname, cdescription, cimageUrl;
 
+    public ProductCategory() {
+
+    }
+
     public ProductCategory(String cid, String cname, String cdescription, String cimageUrl) {
         this.cid = cid;
         this.cname = cname;

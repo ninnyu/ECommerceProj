@@ -22,14 +22,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <EditText
-            android:id="@+id/et_registerfname"
+            android:id="@+id/et_updateFname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="9"
             android:inputType="textPersonName"
             android:hint="@string/fname"/>
         <EditText
-            android:id="@+id/et_registerlname"
+            android:id="@+id/et_updateLname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="9"
@@ -38,43 +38,43 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_userValidation"
+        android:id="@+id/tv_updateUserValidation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"/>
     <EditText
-        android:id="@+id/et_registeraddress"
+        android:id="@+id/et_updateAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/address"/>
     <TextView
-        android:id="@+id/tv_addressValidation"
+        android:id="@+id/tv_updateAddressValidation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"/>
     <EditText
-        android:id="@+id/et_registeremail"
+        android:id="@+id/et_upateEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="@string/email"/>
     <TextView
-        android:id="@+id/tv_emailValidation"
+        android:id="@+id/tv_updateEmailValidation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"/>
     <EditText
-        android:id="@+id/et_registermobile"
+        android:id="@+id/et_updateMobile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/mobile"/>
     <TextView
-        android:id="@+id/tv_mobileValidation"
+        android:id="@+id/tv_updateMobileValidation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"/>

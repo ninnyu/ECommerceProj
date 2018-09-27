@@ -74,7 +74,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/quantity"
+                            android:text="@string/quantityInStock"
                             android:textSize="16sp"/>
                         <TextView
                             android:layout_width="wrap_content"
@@ -96,19 +96,27 @@
                     android:paddingTop="20dp"
                     android:orientation="horizontal"
                     android:gravity="center">
-                <Button
-                    android:id="@+id/bt_favorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/addtofavorites"/>
-                <Space
-                    android:layout_width="50dp"
-                    android:layout_height="50dp" />
-                <Button
-                    android:id="@+id/bt_cart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/addtocart"/>
+                    <Button
+                        android:id="@+id/bt_favorite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/addtofavorites"/>
+                    <Space
+                        android:layout_width="5dp"
+                        android:layout_height="50dp" />
+                    <Button
+                        android:id="@+id/bt_cart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/addtocart"/>
+                    <Space
+                        android:layout_width="5dp"
+                        android:layout_height="50dp" />
+                    <EditText
+                        android:id="@+id/et_quantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/quantity"/>
                 </LinearLayout>
 
         </LinearLayout>

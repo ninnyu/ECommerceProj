@@ -1,7 +1,6 @@
 package com.example.potatopaloozac.ecommerceproj.ui.products.productcategories;
 
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,7 +21,7 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
     private List<ProductCategory> categoryList;
     private CategoryClick clickListener;
 
-    public CategoryRecyclerAdapter(List<ProductCategory> categoryList, Context context, CategoryClick clickListener) {
+    public CategoryRecyclerAdapter(List<ProductCategory> categoryList, CategoryClick clickListener) {
         this.categoryList = categoryList;
         this.clickListener = clickListener;
     }
@@ -39,7 +38,6 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
         final ProductCategory categoryObj = categoryList.get(position);
 
         holder.tv_cname.setText(categoryObj.getCname());
-        holder.tv_cdescription.setText(categoryObj.getCdescription());
 
         Picasso.get()
                 .load(categoryObj.getCimageUrl())
@@ -61,14 +59,13 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tv_cname, tv_cdescription;
+        TextView tv_cname;
         ImageView iv_image;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             tv_cname = itemView.findViewById(R.id.tv_cname);
-            tv_cdescription = itemView.findViewById(R.id.tv_cdescription);
             iv_image = itemView.findViewById(R.id.iv_cimage);
         }
     }

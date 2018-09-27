@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.potatopaloozac.ecommerceproj.R;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.UserProfile;
+import com.example.potatopaloozac.ecommerceproj.ui.favorites.FavoritesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.login.userprofile.updateprofile.UpdateProfileActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.products.productcategories.CategoriesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.shoppingcart.ShoppingCartActivity;
@@ -31,12 +31,12 @@ public class UserProfileActivity extends AppCompatActivity implements IUserProfi
     TextView tvUserid;
     @BindView(R.id.tv_userName)
     TextView tvUserName;
-    @BindView(R.id.tv_useraddress)
-    TextView tvUseraddress;
-    @BindView(R.id.tv_useremail)
-    TextView tvUseremail;
-    @BindView(R.id.tv_usermobile)
-    TextView tvUsermobile;
+    @BindView(R.id.tv_userAddress)
+    TextView tvUserAddress;
+    @BindView(R.id.tv_userEmail)
+    TextView tvUserEmail;
+    @BindView(R.id.tv_userMobile)
+    TextView tvUserMobile;
 
     private IUserProfilePresenter profilePresenter;
     public static Activity userProfileActivity;
@@ -62,9 +62,9 @@ public class UserProfileActivity extends AppCompatActivity implements IUserProfi
         String username = profile.getFname() + " " + profile.getLname();
         tvUserid.setText(profile.getId());
         tvUserName.setText(username);
-        tvUseraddress.setText(profile.getAddress());
-        tvUseremail.setText(profile.getEmail());
-        tvUsermobile.setText(profile.getMobile());
+        tvUserAddress.setText(profile.getAddress());
+        tvUserEmail.setText(profile.getEmail());
+        tvUserMobile.setText(profile.getMobile());
     }
 
     @OnClick({R.id.bt_toolbarHome, R.id.bt_toolbarTopsellers, R.id.bt_toolbarFavorites, R.id.bt_toolbarShoppingcart, R.id.bt_updateProfile})
@@ -81,7 +81,8 @@ public class UserProfileActivity extends AppCompatActivity implements IUserProfi
                 break;
             }
             case R.id.bt_toolbarFavorites: {
-                Toast.makeText(this, "clicked favorites", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, FavoritesActivity.class);
+                startActivity(i);
                 break;
             }
             case R.id.bt_toolbarShoppingcart: {

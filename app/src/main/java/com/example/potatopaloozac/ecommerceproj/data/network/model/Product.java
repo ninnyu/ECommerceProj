@@ -2,12 +2,20 @@ package com.example.potatopaloozac.ecommerceproj.data.network.model;
 
 public class Product {
 
-    private String id, pname, quantity, price, description, image;
+    private String id, pname, quantityInStock, price, description, image;
 
-    public Product(String id, String pname, String quantity, String price, String description, String image) {
+    public Product(String id, String pname, String price, String description, String image) {
         this.id = id;
         this.pname = pname;
-        this.quantity = quantity;
+        this.price = price;
+        this.description = description;
+        this.image = image;
+    }
+
+    public Product(String id, String pname, String quantityInStock, String price, String description, String image) {
+        this.id = id;
+        this.pname = pname;
+        this.quantityInStock = quantityInStock;
         this.price = price;
         this.description = description;
         this.image = image;
@@ -29,12 +37,12 @@ public class Product {
         this.pname = pname;
     }
 
-    public String getQuantity() {
-        return quantity;
+    public String getQuantityInStock() {
+        return quantityInStock;
     }
 
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
+    public void setQuantityInStock(String quantityInStock) {
+        this.quantityInStock = quantityInStock;
     }
 
     public String getPrice() {

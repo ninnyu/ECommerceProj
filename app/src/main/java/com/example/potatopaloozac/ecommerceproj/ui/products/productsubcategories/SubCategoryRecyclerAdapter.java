@@ -1,7 +1,6 @@
 package com.example.potatopaloozac.ecommerceproj.ui.products.productsubcategories;
 
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,11 +20,9 @@ public class SubCategoryRecyclerAdapter extends RecyclerView.Adapter<SubCategory
 
     private List<ProductSubCategory> subCategoryList;
     private SubCategoryClick subCategoryClickListener;
-    private Context context;
 
-    public SubCategoryRecyclerAdapter(List<ProductSubCategory> subCategoryList, Context context, SubCategoryClick subCategoryClickListener) {
+    public SubCategoryRecyclerAdapter(List<ProductSubCategory> subCategoryList, SubCategoryClick subCategoryClickListener) {
         this.subCategoryList = subCategoryList;
-        this.context = context;
         this.subCategoryClickListener = subCategoryClickListener;
     }
 
@@ -41,7 +38,6 @@ public class SubCategoryRecyclerAdapter extends RecyclerView.Adapter<SubCategory
         final ProductSubCategory subCategoryObj = subCategoryList.get(position);
 
         holder.tv_cname.setText(subCategoryObj.getScname());
-        holder.tv_cdescription.setText(subCategoryObj.getScdescription());
 
         Picasso.get()
                 .load(subCategoryObj.getScimageUrl())
@@ -63,14 +59,13 @@ public class SubCategoryRecyclerAdapter extends RecyclerView.Adapter<SubCategory
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tv_cname, tv_cdescription;
+        TextView tv_cname;
         ImageView iv_image;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             tv_cname = itemView.findViewById(R.id.tv_cname);
-            tv_cdescription = itemView.findViewById(R.id.tv_cdescription);
             iv_image = itemView.findViewById(R.id.iv_cimage);
         }
     }

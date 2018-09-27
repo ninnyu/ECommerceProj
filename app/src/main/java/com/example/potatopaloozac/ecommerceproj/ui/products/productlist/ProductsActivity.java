@@ -1,23 +1,19 @@
 package com.example.potatopaloozac.ecommerceproj.ui.products.productlist;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.potatopaloozac.ecommerceproj.R;
-import com.example.potatopaloozac.ecommerceproj.data.database.model.ShoppingCart;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.Product;
+import com.example.potatopaloozac.ecommerceproj.ui.favorites.FavoritesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.login.userprofile.UserProfileActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.products.productcategories.CategoriesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.products.productdetails.ProductDetailsActivity;
@@ -66,10 +62,10 @@ public class ProductsActivity extends AppCompatActivity implements IProductView 
         rv_products.setItemAnimator(new DefaultItemAnimator());
 
         if (productList != null) {
-            ProductRecyclerAdapter recyclerAdapter = new ProductRecyclerAdapter(productList, this, new ProductClick() {
+            ProductRecyclerAdapter recyclerAdapter = new ProductRecyclerAdapter(productList, new ProductClick() {
                 @Override
                 public void onItemClick(View v, Product product) {
-                    String[] details = {product.getId(), product.getPname(), product.getQuantity(),
+                    String[] details = {product.getId(), product.getPname(), product.getQuantityInStock(),
                             product.getPrice(), product.getDescription(), product.getImage()};
 
                     Bundle b = new Bundle();
@@ -98,7 +94,8 @@ public class ProductsActivity extends AppCompatActivity implements IProductView 
                 break;
             }
             case R.id.bt_toolbarFavorites: {
-                Toast.makeText(this, "clicked favorites", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, FavoritesActivity.class);
+                startActivity(i);
                 break;
             }
             case R.id.bt_toolbarShoppingcart: {

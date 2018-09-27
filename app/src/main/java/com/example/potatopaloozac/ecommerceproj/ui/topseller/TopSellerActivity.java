@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.potatopaloozac.ecommerceproj.R;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.TopSeller;
+import com.example.potatopaloozac.ecommerceproj.ui.favorites.FavoritesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.login.userprofile.UserProfileActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.products.productcategories.CategoriesActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.shoppingcart.ShoppingCartActivity;
@@ -69,7 +70,8 @@ public class TopSellerActivity extends AppCompatActivity implements ITopSellerVi
                 break;
             }
             case R.id.bt_toolbarFavorites: {
-                Toast.makeText(this, "clicked favorites", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, FavoritesActivity.class);
+                startActivity(i);
                 break;
             }
             case R.id.bt_toolbarShoppingcart: {
@@ -93,7 +95,7 @@ public class TopSellerActivity extends AppCompatActivity implements ITopSellerVi
         rv_topseller.setLayoutManager(manager);
         rv_topseller.setItemAnimator(new DefaultItemAnimator());
 
-        TopSellerRecyclerAdapter recyclerAdapter = new TopSellerRecyclerAdapter(sellerList, this);
+        TopSellerRecyclerAdapter recyclerAdapter = new TopSellerRecyclerAdapter(sellerList);
         rv_topseller.setAdapter(recyclerAdapter);
     }
 }

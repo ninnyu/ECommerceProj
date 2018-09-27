@@ -8,12 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.potatopaloozac.ecommerceproj.R;
 import com.example.potatopaloozac.ecommerceproj.data.network.model.UserProfile;
-import com.example.potatopaloozac.ecommerceproj.ui.login.LoginActivity;
-import com.example.potatopaloozac.ecommerceproj.ui.login.register.RegisterActivity;
 import com.example.potatopaloozac.ecommerceproj.ui.login.userprofile.UserProfileActivity;
 
 import butterknife.BindView;
@@ -52,7 +49,6 @@ public class UpdateProfileActivity extends AppCompatActivity implements IUpdateP
         ButterKnife.bind(this);
 
         updateProfilePresenter = new UpdateProfilePresenter(this);
-        updateProfilePresenter.onActivityCreated();
     }
 
     @Override

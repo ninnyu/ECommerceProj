@@ -1,7 +1,6 @@
 package com.example.potatopaloozac.ecommerceproj.ui.products.productlist;
 
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,11 +20,9 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
 
     private List<Product> productList;
     private ProductClick productClickListener;
-    private Context context;
 
-    public ProductRecyclerAdapter(List<Product> productList, Context context, ProductClick productClickListener) {
+    public ProductRecyclerAdapter(List<Product> productList, ProductClick productClickListener) {
         this.productList = productList;
-        this.context = context;
         this.productClickListener = productClickListener;
     }
 
@@ -39,8 +36,6 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final Product productObj = productList.get(position);
-
-        holder.tv_name.setText(productObj.getPname());
 
         Picasso.get()
                 .load(productObj.getImage())
@@ -62,13 +57,11 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tv_name;
         ImageView iv_image;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            tv_name = itemView.findViewById(R.id.tv_pname);
             iv_image = itemView.findViewById(R.id.iv_pimage);
         }
     }

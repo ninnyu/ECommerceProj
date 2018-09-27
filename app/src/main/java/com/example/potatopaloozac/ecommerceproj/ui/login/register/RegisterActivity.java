@@ -53,7 +53,6 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
         ButterKnife.bind(this);
 
         registerPresenter = new RegisterPresenter(this);
-        registerPresenter.onActivityCreated();
     }
 
     @Override
